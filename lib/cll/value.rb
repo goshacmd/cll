@@ -4,6 +4,7 @@ module CLL
       def value_for_raw(raw)
         case raw
         when Integer then IntegerValue.new(raw)
+        when String then StringValue.new(raw)
         when true, false then BoolValue.bool(raw)
         else
           raise ArgumentError, "unknown raw value type"
@@ -37,6 +38,14 @@ module CLL
 
     def ==(other)
       BoolValue.bool(val == other.val)
+    end
+  end
+
+  class StringValue < Value
+    attr_reader :val
+
+    def initialize(raw)
+      @val = raw.to_s
     end
   end
 

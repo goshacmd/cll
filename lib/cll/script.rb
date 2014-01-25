@@ -1,5 +1,7 @@
 module CLL
   class Script
+    attr_reader :memory
+
     # Initialize a new +Script+.
     #
     # @param instructions [Array<Array, Symbol>] array of instructions
@@ -41,6 +43,7 @@ module CLL
       @stack = Containers::Stack.new
       @pointer = 0
       @stop = false
+      @memory = {}
     end
   end
 end
