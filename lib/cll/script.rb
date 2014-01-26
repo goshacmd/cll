@@ -5,7 +5,7 @@ module CLL
     # Initialize a new +Script+.
     #
     # @param instructions [Array<Array, Symbol>] array of instructions
-    # @param storage [Hash] contract storage
+    # @param storage [Storage] contract storage
     def initialize(instructions, storage)
       @instructions = instructions.map { |op, *args| [op, *args.map { |arg| Value.value_for_raw(arg) }] }
       @storage = storage

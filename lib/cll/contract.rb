@@ -7,7 +7,7 @@ module CLL
     # @param instructions [Array<Array>] array of instructions
     def initialize(instructions)
       @instructions = instructions
-      @storage = {}
+      @storage = Storage.new
     end
 
     # Execute the script in the context of the contract.

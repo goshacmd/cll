@@ -3,6 +3,7 @@ require 'singleton'
 
 require 'cll/op'
 require 'cll/value'
+require 'cll/storage'
 require 'cll/script'
 require 'cll/contract'
 require 'cll/version'
@@ -23,7 +24,8 @@ module CLL
     STOP:   Op.op { script.stop! },
     MSTORE: Op.op { |name| script.memory[name.val] = stack.pop },
     MLOAD:  Op.op { |name| stack.push(script.memory[name.val]) },
-    SSET:   Op.op { storage[stack.pop.val] = stack.pop },
-    SGET:   Op.op { stack.push(storage[stack.pop.val]) }
+    SSET:   Op.op { storage.set(stack.pop.val, stack.pop) },
+    SGET:   Op.op { stack.push(storage.get(stack.pop.val)) },
+    SSADD:  Op.op { storage.sadd(stack.pop.val, stack.pop) }
   }
 end
