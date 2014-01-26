@@ -26,6 +26,7 @@ module CLL
     MLOAD:  Op.op { |name| stack.push(script.memory[name.val]) },
     SSET:   Op.op { storage.set(stack.pop.val, stack.pop) },
     SGET:   Op.op { stack.push(storage.get(stack.pop.val)) },
+    SDEL:   Op.op { storage.del(stack.pop.val) },
     SSADD:  Op.op { storage.sadd(stack.pop.val, stack.pop) }
   }
 end

@@ -15,6 +15,10 @@ module CLL
       @hash[key] = value
     end
 
+    def del(key)
+      @hash.delete(key)
+    end
+
     def sadd(key, value)
       insure_set(key)
       @hash[key].add(value)
