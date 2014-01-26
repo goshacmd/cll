@@ -1,6 +1,6 @@
 require 'cll'
 
-contract = CLL::Contract.new do
+contract = CLL::Contract.new(balance: 12) do
   push 1
   push "current_number"
   sget
@@ -17,3 +17,4 @@ contract.run_script
 puts contract.inspect
 contract.run_script
 puts contract.inspect
+contract.run_script # should run out of balance

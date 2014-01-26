@@ -18,17 +18,20 @@ module CLL
     end
 
     attr_reader :instructions, :storage
+    attr_accessor :balance
 
     # Initialize a new +Contract+.
     #
     # @param instructions [Array<Array>] array of instructions
-    def initialize(instructions = nil, &block)
+    # @param balance [Integer] contract balance
+    def initialize(instructions = nil, balance: 100, &block)
       if block_given?
         @instructions = InstructionBuilder.new(&block).instructions
       else
         @instructions = instructions
       end
 
+      @balance = balance
       @storage = Storage.new
     end
 
@@ -36,7 +39,7 @@ module CLL
     #
     # @return [void]
     def run_script
-      Script.new(instructions, storage).execute
+      Script.new(instructions, storage, self).execute
     end
   end
 end
