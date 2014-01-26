@@ -1,6 +1,10 @@
 module CLL
+  # Value on the stack.
   class Value
     class << self
+      # Create a stack value object from raw Ruby value.
+      #
+      # @return [Value]
       def value_for_raw(raw)
         case raw
         when Integer then IntegerValue.new(raw)
