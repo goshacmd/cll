@@ -24,7 +24,7 @@ module CLL
     #
     # @param instructions [Array<Array>] array of instructions
     # @param balance [Integer] contract balance
-    def initialize(instructions = nil, balance: 100, &block)
+    def initialize(instructions = nil, balance: 50, &block)
       if block_given?
         @instructions = InstructionBuilder.new(&block).instructions
       else
