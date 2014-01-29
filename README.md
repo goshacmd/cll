@@ -2,7 +2,6 @@
 
 CLL-language (Ethereum) simulator. WIP.
 
-
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -15,7 +14,23 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require 'cll'
+
+contract = CLL::Contract.new(balance: 100) do
+  push 1
+  push "counter"
+  sget
+  add
+  push "counter"
+  sset
+end
+
+# set('counter', get('counter') + 1)
+
+contract.run_script
+puts contract.inspect
+```
 
 ## Contributing
 
